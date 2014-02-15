@@ -1,5 +1,7 @@
 def get_word
-  ["fucker", "asshole", "bitch", "shit"].sample
+  words = []
+  File.readlines("words.txt").each { |word| words.push(word.chomp) }
+  words.sample
 end
 
 @word = get_word
@@ -46,7 +48,7 @@ def display_screen
     else 
       puts "incorrect"
       if incorrect_guesses >= 5 
-        puts "You lost"
+        puts "You lost, the word was #{@word}"
       else
         display_screen
       end
@@ -59,6 +61,7 @@ def incorrect_guesses
     !@word.split("").include? letter
   }.length
 end
+
 display_screen
 
 
