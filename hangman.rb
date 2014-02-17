@@ -25,7 +25,7 @@ end
 
 def display_screen
   puts "The word is #{display_word}"
-  puts "You have #{5-incorrect_guesses} left"
+  puts "You have #{10-incorrect_guesses} left"
   puts "Guess a letter?"
   # Chomp gets rid of n? which is what enter creates after hitting enter
   response = gets.chomp
@@ -40,14 +40,14 @@ def display_screen
       
     if @word.split("").include? response
       if won? 
-        puts "you have won"
+        puts "you have won, the word was #{@word}"
       else
         puts "correct"
         display_screen
       end
     else 
       puts "incorrect"
-      if incorrect_guesses >= 5 
+      if incorrect_guesses >= 10
         puts "You lost, the word was #{@word}"
       else
         display_screen
